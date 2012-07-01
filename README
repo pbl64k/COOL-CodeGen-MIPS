@@ -1,0 +1,32 @@
+Generated (MIPS) code for some examples used in PA4 (codegen) of Coursera
+Compilers course.
+
+hello-world.cl is a classic sanity check with a couple of bells & whistles.
+
+metharg.cl verifies essential assignment semantics. A correct codegen should
+produce metharg.s equivalent in behavior to the one provided here.
+
+The rest of the *.s files were produced from standard COOL sample programs
+accompanying Prof. Alex Aiken's compilers course.
+
+My codegen produces a simple 1-register stack machine, and even there trades
+off performance for the clarity of the output (e.g., there's no optimization
+of temporaries, and stack operations are often inefficient to simplify
+boilerplate code). Locals are stored in the activation record. case .. esac is
+particularly brain-dead as it produces a complete list of class tags matching
+given branches, and compares the value given against those explicitly.
+
+My implementation is correct as far as I can tell, and supports the standard
+GenGC provided. I cannot publish my sources for the codegen proper, as the
+course is likely to be re-run in the future.
+
+I used stock lexer, parser and type checker with my codegen, but I implemented
+the entire pipeline in earlier PA's.
+
+The output is meant to be used with spim, a MIPS simulator; see:
+
+http://sourceforge.net/projects/spimsimulator/
+
+trap.handler provided by the course staff is required, as it implements
+essential run-time functions (I/O, MemMgr/GC).
+
